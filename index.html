@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Contagem Regressiva 🎉</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1f3c, #3a1c71);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            background: linear-gradient(180deg, #0f1028, #1c1f4a);
+            padding: 40px 50px;
+            border-radius: 22px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            max-width: 620px;
+            color: #fff;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            margin-bottom: 35px;
+            color: #f2f2f8;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            background: linear-gradient(135deg, #2e2b78, #4b3fae);
+            color: #ffffff;
+            padding: 22px;
+            border-radius: 16px;
+            min-width: 95px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 34px;
+            font-weight: bold;
+        }
+
+        .time-box small {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        .balloons {
+            margin-top: 35px;
+            font-size: 32px;
+            opacity: 0.95;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎉 Contagem regressiva para o Trintou da nossa querida Jaci! 🎂</h1>
+
+        <div class="subtitle">
+            Um momento especial está chegando 💜
+        </div>
+
+        <div class="countdown">
+            <div class="time-box">
+                <span id="days">0</span>
+                <small>Dias</small>
+            </div>
+            <div class="time-box">
+                <span id="hours">0</span>
+                <small>Horas</small>
+            </div>
+            <div class="time-box">
+                <span id="minutes">0</span>
+                <small>Minutos</small>
+            </div>
+            <div class="time-box">
+                <span id="seconds">0</span>
+                <small>Segundos</small>
+            </div>
+        </div>
+
+        <div class="balloons">
+            🎈 🎉 🎂 🎉 🎈
+        </div>
+    </div>
+
+    <script>
+        function atualizarContagem() {
+            const dataAlvo = new Date(2026, 6, 6, 0, 0, 0); // 06/07/2026
+            const agora = new Date();
+            const diferenca = dataAlvo - agora;
+
+            if (diferenca <= 0) {
+                document.querySelector('.countdown').innerHTML =
+                    "<h2>🎉 Chegou o grande dia! 🎂</h2>";
+                return;
+            }
+
+            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+            const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+            const segundos = Math.floor((diferenca / 1000) % 60);
+
+            document.getElementById("days").textContent = dias;
+            document.getElementById("hours").textContent = horas;
+            document.getElementById("minutes").textContent = minutos;
+            document.getElementById("seconds").textContent = segundos;
+        }
+
+        atualizarContagem();
+        setInterval(atualizarContagem, 1000);
+    </script>
+
+</body>
+</html>
